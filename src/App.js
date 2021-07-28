@@ -25,10 +25,11 @@ function NavTag(){
 }
 
 // ArticleTag 컴포넌트 생성
-function ArticleTag(){
+function ArticleTag(props){
+  console.log('props',props.title);
   return(
     <article>
-        <h2>Welcome</h2>
+        <h2>{props.title}</h2>
         Hello, WEB
     </article>
   );
@@ -39,7 +40,8 @@ function App() {
     <div className="App">
       <HeaderTag />
       <NavTag />
-      <ArticleTag />
+      <ArticleTag title="Welcome" description="Hello, WEB"/>
+      <ArticleTag title="Hi" description="Hello, REACT"/>
     </div>
   );
 }
