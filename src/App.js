@@ -11,6 +11,7 @@ function HeaderTag(){
       </header>
   );
 }
+
 // NavTag 컴포넌트 생성
 function NavTag(){
   return(
@@ -23,16 +24,22 @@ function NavTag(){
   );
 }
 
+// ArticleTag 컴포넌트 생성
+function ArticleTag(){
+  return(
+    <article>
+        <h2>Welcome</h2>
+        Hello, WEB
+    </article>
+  );
+}
 
 function App() {
   return (
     <div className="App">
       <HeaderTag />
       <NavTag />
-      <article>
-        <h2>Welcome</h2>
-        Hello, WEB
-      </article>
+      <ArticleTag />
     </div>
   );
 }
