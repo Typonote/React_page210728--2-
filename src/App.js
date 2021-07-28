@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 
-// HeaderTag 컴포넌트 생성
-function HeaderTag(props) {
+// Header 컴포넌트 생성
+function Header(props) {
+  console.log('Header', props)
+  function onClickHandler() {
+    props.onChangeMode();
+  }
   return (
     <header>
       <h1>
-        <a href="index.html">{props.title}</a>
+        <a href="index.html" onClick={onClickHandler}>WEB</a>
       </h1>
     </header>
   );
@@ -19,10 +23,9 @@ function NavTag(props) {
   var lis = [];
 
   for (var i = 0; i < d.length; i++) {
-    console.log(i, d[i]);
-    lis.push(<li><a href={d[i].id}>{d[i].title}</a></li>);
+    lis.push(<li key={d[i].id}><a href={d[i].id}>{d[i].title}</a></li>);
+    // key를 사용하는 이유: 렌더링 시 좀 더 빨라진다.
   }
-
 
   return (
     <nav>
@@ -51,10 +54,15 @@ function App() {
     { id: 2, title: 'css', description: 'css is....' }
   ]
 
+  function onChangeModeHandler() {
+    // mode에 맞는 기능이 실행되도록 설정하는 핸들러
+    console.log('onChangeMode!!!!')
+  }
+
   return (
     <div className="App">
-      <HeaderTag title="I love WEB" />
-      <NavTag data={topics} />
+      <Header title="I love WEB" onChangeMode={onChangeModeHandler} />
+      <NavTag data={topics} onChangeMode={onChangeModeHandler} />
       <ArticleTag title="Welcome" description="Hello, WEB" />
     </div>
   );
