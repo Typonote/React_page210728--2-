@@ -15,14 +15,14 @@ function HeaderTag(props) {
 // NavTag 컴포넌트 생성
 function NavTag(props) {
 
-  console.log('props', props.data);
   var d = props.data;
   var lis = [];
 
   for (var i = 0; i < d.length; i++) {
     console.log(i, d[i]);
-    lis.push(<li>{d[i].title}</li>)
+    lis.push(<li><a href={d[i].id}>{d[i].title}</a></li>);
   }
+
 
   return (
     <nav>
