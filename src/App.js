@@ -2,11 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 
 // HeaderTag 컴포넌트 생성
-function HeaderTag(){
+function HeaderTag(props){
   return (
     <header>
         <h1>
-          <a href="index.html">WEB</a>
+          <a href="index.html">{props.title}</a>
         </h1>
       </header>
   );
@@ -29,8 +29,8 @@ function ArticleTag(props){
   console.log('props',props.title);
   return(
     <article>
-        <h2>{props.title}</h2>
-        Hello, WEB
+        <h2 style={{color:'red', fontSize: '100px'}}>{props.title}</h2>
+        {props.description}
     </article>
   );
 }
@@ -38,10 +38,12 @@ function ArticleTag(props){
 function App() {
   return (
     <div className="App">
-      <HeaderTag />
+      <HeaderTag title="I love WEB"/>
       <NavTag />
       <ArticleTag title="Welcome" description="Hello, WEB"/>
       <ArticleTag title="Hi" description="Hello, REACT"/>
+      <ArticleTag title="Hi2" description="Hello, REACT"/>
+      <ArticleTag title="Hi3" description="Hello, REACT"/>
     </div>
   );
 }
