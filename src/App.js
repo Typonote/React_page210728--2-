@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
+// 컴포넌트 => 재사용성과 유지보수성 증가
+
 // Header 컴포넌트 생성
 function Header(props) {
   // console.log('Header', props)
@@ -27,11 +29,11 @@ function NavTag(props) {
     props.onChangeMode();
   }
 
-  var d = props.data;
-  var lis = [];
+  var d = props.data; // 밑에 data={topics}를 컴포넌트에 전달하기 위해 매개변수 props 사용
+  var lis = []; // for문을 돌고나온 <li>들을 담을 배열 lis
 
   for (var i = 0; i < d.length; i++) {
-    lis.push(<li key={d[i].id}><a href={d[i].id} onClick={onClickHandler}>{d[i].title}</a></li>);
+    lis.push(<li key={d[i].id}><a href={d[i].id} onClick={onClickHandler}>{d[i].title}</a></li>);  // lis배열에 반복문의 결과를 push한다.
     // key를 사용하는 이유: 렌더링 시 좀 더 빨라진다.
   }
 
@@ -59,9 +61,7 @@ function App() {
   var [mode, setMode] = useState('WELCOME');
   console.log('mode', mode);
 
-
-
-  // topics배열생성 => NavTag에서 사용
+  // topics배열생성 => props를 이용하여 NavTag에서 사용
   var topics = [
     { id: 1, title: 'html', description: 'html is....' },
     { id: 2, title: 'css', description: 'css is....' }
@@ -101,3 +101,6 @@ function App() {
 }
 
 export default App;
+
+
+// props :   컴포넌트 끼리 값을 전달하는 수단 => Props는 수정할 수 없는 순수 함수로 정의.
